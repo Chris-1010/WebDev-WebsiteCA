@@ -1,0 +1,600 @@
+:root {
+    color: bisque;
+    scroll-behavior: smooth;
+    background-color: maroon;
+    --primary-color: maroon;
+    --secondary-color: bisque;
+}
+
+@viewport {
+    width: device-width;
+}
+
+@font-face {
+    font-family: "Roundy";
+    src: url(MarckScript-Regular.ttf)
+}
+
+p, h1, h2, li {
+    font-family: Roundy;
+}
+
+body {
+    margin: 0;
+}
+
+h2 {
+    font-size: 3.5em;
+    margin-left: 3ch;
+}
+
+h3 {
+    font-size: 3em;
+}
+
+h4 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+header {
+    display: grid;
+    grid-template-rows: 3fr 1fr 1fr 3fr;
+    background: url('Background.jpg') no-repeat;
+    background-size: auto 100%;
+    text-align: center;
+    height: 100vh;
+}
+
+@media screen and (min-width: 900px) {
+header {
+    background-size: 100%;
+    }
+}
+
+header > h1 {
+    grid-row: 2/3;
+    backdrop-filter: blur(10px);
+    margin: auto 0;
+    font-size: 5em;
+}
+
+main {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 2fr min(80%, 100%) 1fr;
+    /* grid-template-columns: repeat(auto-fill, minmax(2fr, 1fr)); */
+    
+    margin-bottom: 0;
+    box-shadow: 0 -40px 30px rgba(255, 228, 196, 0.7);
+    
+}
+
+main > section {
+    border-radius: 2em;
+}
+
+@media screen and (width: 1920px) {
+    header {
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        width: 100%;
+    }
+
+    main {
+        margin-top: 933px;
+        box-shadow: none;
+    }
+}
+main * {
+    grid-column: 2;
+}
+
+
+
+#sidebar {
+    position: fixed;
+    grid-column: 1;
+    padding: 2em;
+    padding-left: 0;
+    border-top-right-radius: 10em;
+    border-bottom-right-radius: 10em;
+    background-color: rgba(0, 0, 0, 0.6);
+    top: 10%;
+    transition: 6s ease-in-out;
+}
+
+main:not(:hover) #sidebar {
+    left: -100%;
+    transition-delay: 1s;
+}
+
+main:hover #sidebar {
+    left: 0;
+    transition: 2s;
+}
+
+#sidebar > ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 5em;
+    list-style: none;
+}
+
+main:hover section#food + #sidebar a {
+        transform: rotateY(90deg);
+}
+
+li {
+    font-size: 2em;
+}
+
+@media (hover: hover) {
+    li:hover > a {
+        font-weight: 600;
+    }
+}
+
+
+li > a {
+    text-decoration: none;
+    color: white;
+}
+
+
+section {
+    border-top-width: 7px;
+    border-top-style: groove;
+    border-image: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+    border-image-slice: 1;
+    background-color: var(--primary-color);
+    scroll-margin-top: 200px;
+  }
+
+section > section {
+    display: grid;
+    grid-template-columns: 1fr 1fr minmax(100px, 1fr);
+    grid-template-rows: 1fr;
+}
+
+section > h3 {
+    grid-column: 1;
+    align-self: center;
+    margin-left: 5ch;
+}
+
+section > p {
+    grid-column: 2;
+    grid-row: 1;
+    place-self: center;
+    text-align: center;
+    font-size: 2em;
+    margin: 0 1em;
+}
+
+section > figure {
+    grid-column: 3;
+    place-self: center;
+}
+
+i {
+    color: yellow;
+    font-size: 70%;
+}
+
+table {
+    display: none;
+}
+
+@media screen and (min-width: 600px) {
+table {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    background-color: var(--secondary-color);
+    border-collapse: collapse;
+    border-bottom-left-radius: 3em;
+    border-bottom-right-radius: 3em;
+}
+
+table * {
+    text-decoration: none;
+    text-align: center;
+    padding: 0.5em 0.2em;
+    margin: 0;
+}
+
+th, td {
+    border: 1px solid var(--primary-color);
+    font-size: 2rem;
+}
+
+th * {
+    color: #36454F;
+    font-size: 1.5em;
+}
+
+td:active * {
+    color: red;
+    transition: .25s;
+}
+
+td a {
+    color: green;
+}
+
+tr > th {
+    border-top: 0;
+}
+
+tr:last-child > * {
+    border-bottom: 0;
+}
+
+td:first-child, th:first-child {
+    border-left: 0;
+}
+
+td:last-child, th:last-child {
+    border-right: 0;
+}
+
+table img {
+    width: 2em;
+    position: absolute;
+    align-self: flex-end;
+    padding: 0;
+    box-shadow: none;
+    right: 0em;
+    bottom: 25%;
+    opacity: 0;
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+    td:nth-child(2) {
+        padding: 0 6em;
+        position: relative;
+    }
+
+    td:hover > img:nth-child(2) {
+        transition: 1.5s;
+        opacity: 100%;
+    }
+
+    td:hover > img:nth-child(3) {
+        right: 1em;
+        opacity: 100%;
+        transition: 2s cubic-bezier(0.3, 0, 0.265, 1.55);
+        transition-delay: .25s;
+    }
+
+    td:hover > img:nth-child(4) {
+        right: 2em;
+        opacity: 100%;
+        transition: 2s cubic-bezier(0.3, 0, 0.265, 1.55);
+        transition-delay: .5s;
+    }
+
+    td:hover > img:nth-child(5) {
+        right: 3em;
+        opacity: 100%;
+        transition: 2s cubic-bezier(0.3, 0, 0.265, 1.55);
+        transition-delay: .75s;
+    }
+
+    td:hover > img:nth-child(6) {
+        right: 4em;
+        opacity: 100%;
+        transition: 2s cubic-bezier(0.3, 0, 0.265, 1.55);
+        transition-delay: 1s;
+    }
+
+    td:not(:hover) > img {
+        opacity: 0;
+        transition: 2s ease;
+    }
+}
+
+td:hover {
+    background-color: antiquewhite;
+}
+
+img {
+    box-shadow: 0px 4px 8px 0px rgba(0,0,0,.5),
+                0px 6px 20px 0px rgba(0,0,0,.5);
+    filter: drop-shadow(0 0 .5em white);
+    width: 100%;
+    transition: 1s;
+}
+
+figure:not([class]) > img:hover {
+    filter: drop-shadow(0 0 1em gold);
+    transition: 1s;
+}
+
+
+
+figure {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+}
+
+@media (hover: hover) {
+    @media screen and (min-width: 1200px) {
+
+        .reactive {
+            border-left: 5px groove blue;
+            margin: auto;
+            box-sizing: border-box;
+            margin: auto;
+            transition: 1s ease;
+        }
+
+        .reactive:hover {
+            overflow: auto;
+        }
+
+        .reactive img {
+            width: 500px;
+        }
+
+        #bhajee > figure:hover {
+            
+            background: url(Dishes/Onion_Bhajee_Top.png) no-repeat;
+            background-size:  394px;
+            padding-right: 450px;
+            width: 450px;
+            
+        }
+        
+        #bhajee > figure:not(:hover) {
+            
+            background: url(Dishes/Onion_Bhajee_Top.png) no-repeat;
+            background-size:  394px;
+            overflow: hidden;
+            padding-right: 0px;
+            width: 450px;
+            
+            transition-delay: 0.25s;
+        }
+        
+        
+        
+        
+        #pakora > figure:hover {
+            
+            background: url(Dishes/Chicken_Pakora_2.png) no-repeat;
+            
+            padding-right: 463px;
+            width: 463px;
+            
+        }
+        
+        #pakora > figure:not(:hover) {
+            
+            background: url(Dishes/Chicken_Pakora_2.png) no-repeat;
+            overflow: hidden;
+            padding-right: 0px;
+            width: 463px;
+            
+            transition-delay: 0.25s;
+        }
+        
+        
+        
+        #tikka_masala > figure:hover {
+            
+            background: url(Dishes/Chicken_Tikka_Masala_Top.jpg) no-repeat;
+            background-size:  500px;
+            
+            padding-right: 500px;
+            width: 500px;
+            
+        }
+        
+        #tikka_masala > figure:not(:hover) {
+            
+            background: url(Dishes/Chicken_Tikka_Masala_Top.jpg) no-repeat;
+            background-size:  500px;
+            overflow: hidden;
+            padding-right: 0px;
+            width: 500px;
+            
+            transition-delay: 0.25s;
+        }
+        
+        
+        
+        #handi > figure:hover {
+            
+            background: url(Dishes/Lamb_Handi_2.png) no-repeat;
+            background-size:  500px 309px;
+            
+            padding-right: 500px;
+            width: 500px;
+            
+        }
+        
+        #handi > figure:not(:hover) {
+            
+            background: url(Dishes/Lamb_Handi_2.png) no-repeat;
+            background-size:  500px 309px;
+            overflow: hidden;
+            padding-right: 0px;
+            width: 500px;
+            
+            transition-delay: 0.25s;
+        }
+        
+        
+        
+        #biryani > figure:hover {
+            
+            background: url(Dishes/Chicken_Tikka_Biryani_2.jpg) no-repeat;
+            background-size:  500px 429px;
+            
+            padding-right: 500px;
+            width: 500px;
+            
+        }
+        
+        #biryani > figure:not(:hover) {
+            
+            background: url(Dishes/Chicken_Tikka_Biryani_2.jpg) no-repeat;
+            background-size:  500px 429px;
+            overflow: hidden;
+            padding-right: 0px;
+            width: 500px;
+            
+            transition-delay: 0.25s;
+        }
+        
+        
+        
+        #vindaloo > figure:hover {
+            
+            background: url(Dishes/Vindaloo_Top.png) no-repeat;
+            background-size: 500px 377px;
+            
+            padding-right: 500px;
+            width: 500px;
+            
+        }
+        
+        #vindaloo > figure:not(:hover) {
+            
+            background: url(Dishes/Vindaloo_Top.png) no-repeat;
+            background-size: 500px 377px;
+            overflow: hidden;
+            padding-right: 0px;
+            width: 500px;
+            
+            transition-delay: 0.25s;
+        }
+
+        #naan > figure:hover {
+            background: url(Dishes/Garlic_Naan.png) no-repeat;
+            background-size: 500px 377px;
+            
+            padding-right: 500px;
+            width: 500px;
+            height: 377px;
+            
+          }
+        
+        #naan > figure:not(:hover) {
+            background: url(Dishes/Garlic_Naan.png) no-repeat;
+            background-size: 500px 377px;
+            overflow: hidden;
+            padding-right: 0px;
+            width: 500px;
+            height: 377px;
+            
+            transition-delay: 0.25s;
+          }
+        
+        
+        
+        #makhani > figure:hover {
+            background: url(Dishes/Chicken_Makhani_2.jpg) no-repeat;
+            background-size: 355px 100%;
+            padding-right: 500px;
+            width: 500px;
+        }
+        
+        #makhani > figure:not(:hover) {
+            background: url(Dishes/Chicken_Makhani_2.jpg) no-repeat;
+            background-size: 355px 100%;
+            overflow: hidden;
+            padding-right: 0px;
+            width: 500px;
+            
+            transition-delay: 0.25s;
+          }
+    }
+    
+    #rice figcaption:not(:hover) {
+        opacity: 0;
+        font-size: 1%;
+        transition: 1s;
+        transition-delay: 3s;
+    }
+    
+    #rice img:hover ~ figcaption {
+        opacity: 100%;
+        font-size: 80%;
+        transition: 1s;
+      }
+    
+    #rice img:not(:hover) {
+        transition: 1s;
+    }
+    
+    #rice img:hover {
+        margin-bottom: 25px;
+        transition: 1s;
+        }
+}
+
+#rice > figure {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 0;
+  }
+
+#boiled_rice, #pilau_rice, #egg_fried_rice, #vegetable_rice {
+    display: block;
+    text-align: center;
+    margin: 5px;
+    width: 45%;
+    
+}
+
+#rice img {
+    width: 100%;
+    align-items: stretch;
+    justify-content: end;
+    border-radius: 15px;
+}
+
+#rice figcaption {
+    opacity: 1;
+}
+
+
+.heading {
+    border: 0;
+    margin-top: 10em;
+}
+
+main > section:last-child {
+    margin-bottom: 10em;
+}
+
+footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    position: relative;
+    backdrop-filter: blur;
+    z-index: 3;
+    background-color: var(--primary-color);
+    bottom: 0;
+    margin: 0;
+}
+
+footer p {
+    margin: 0 3em;
+    text-align: center;
+    padding-bottom: 2em;
+}
